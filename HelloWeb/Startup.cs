@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HelloWeb
 {
-    public class Startup
+    public class Startup // test
     {
         public Startup(IConfiguration configuration)
         {
