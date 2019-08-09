@@ -1,7 +1,18 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "About";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
+
+<span>It is now @DateTime.Now</span><br />
+
+<!-- 1973 was a leap year = false -->
+<span>1973 was a leap year= @DateTime.IsLeapYear(1973)</span><br />
+
+<!--It is now Sunday, July 27,2014 -->
+<span>It is now @DateTime.Now.ToString("D")</span>
+
+
