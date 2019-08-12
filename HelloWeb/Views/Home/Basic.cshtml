@@ -2,21 +2,40 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewBag.Title = "Basic";
+    ViewData["Title"] = "Basic";
+    
 }
 
-<h2>Hello <span data-bind="text: name"></span></h2>
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
 
-@section  Scripts {
-<script>
-    function ViewModel() {
-        this.name = 'Eric McQuiggan';
-    };
+FirstName:
+<input type="text" name="txtFirstName" data-bind="value: FirstName" />
+<br />
+LastName:
+<input type="text" name="txtLastName" data-bind="value: LastName" />
+<br />
 
-    var viewModel = new ViewModel();
-    ko.applyBindings(viewModel);
-    
-</script>
+<h2>Hello <span data-bind="text: FullName"></span></h2>
+
+@section Scripts {
+    <script>
+
+        var NameViewModel = function (fname, lname) {
+            this.FirstName = ko.observable(fname);
+            this.LastName = ko.observable(lname);
+            this.FullName = ko.computed(function () {
+                return this.FirstName() + " " + this.LastName();
+            }, this);
+
+        };
+
+
+        ko.applyBindings(new NameViewModel("Lester", "Serdenia"));
+
+
+
+    </script>
 
 
 }
