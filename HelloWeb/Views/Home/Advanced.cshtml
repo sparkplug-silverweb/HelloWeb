@@ -7,8 +7,8 @@
 
 <h3>Advanced</h3>
 
-<h2>Hello <span data-bind="text: getName()"></span> </h2>
-<h2>Operating System: @Model.OS</h2>
+<h2>Hello, <span data-bind="text: getName()"></span> </h2>
+<h2>Operating System: <span data-bind="text: getOsName()"></span></h2>
 
 
 
@@ -17,17 +17,23 @@
 
 <script>
 
-    function ViewModel(firstName, lastName) {
+    function ViewModel(firstName, lastName, osName) {
         var self = this;
 
         self.name = firstName + ' ' + lastName;
+        self.OS = osName;
+
         self.getName = function () {
             return self.name;
         };
+
+        self.getOsName = function () {
+            return self.OS;
+        }
     
     };
 
-    var viewModel = new ViewModel('@Model.FirstName', '@Model.LastName');
+    var viewModel = new ViewModel('@Model.FirstName', '@Model.LastName','@Model.OS');
     ko.applyBindings(viewModel);
 
 </script>
